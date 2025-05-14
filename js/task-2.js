@@ -25,11 +25,11 @@ const images = [
   }
 ];
 const gallery = document.querySelector(".gallery");
-const markup = images.map(img => {
-  const item = document.createElement(`img`);
-  item.src = img.url;
-  item.alt = img.alt;
-  item.width = 360;
-  item.height = 300;
-  gallery.append(item);
-})
+const createMarkup = arr => {
+  return arr.map(item => {
+    return `<li>
+    <img src="${item.url}" alt="${item.alt}" width="360" height="300">
+    </li>`
+   }).join("");
+}
+gallery.insertAdjacentHTML("beforeend", createMarkup(images));
